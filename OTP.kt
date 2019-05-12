@@ -50,7 +50,7 @@ class OTP : AppCompatActivity() {
 
         })
     }
-
+//function for manually verifying the OTP
   fun sendVerificationCode(number: String) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 "+91" + number,
@@ -78,7 +78,7 @@ class OTP : AppCompatActivity() {
 
                 })
   }
-
+//function for verifying the OTP sent
     fun verifyVerificationCode(code: String){
         val Credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(verificationID as String,code)
 
@@ -86,6 +86,8 @@ class OTP : AppCompatActivity() {
 
         signInWithPhoneAuthCredential(Credential)
     }
+
+    //once the OTP is verified with his credential this method signs in the user into his account
     fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential){
         mAuth!!.signInWithCredential(credential).addOnCompleteListener {object: OnCompleteListener<AuthResult>{
             override fun onComplete(p0: Task<AuthResult>) {
@@ -108,5 +110,5 @@ class OTP : AppCompatActivity() {
         }
         }
     }
-}  
+}
 }
